@@ -1,26 +1,108 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Tokens come from design-system.md. Use these names, not raw hex values. */
+@theme {
+  --color-navy: #2f5e9e;
+  --color-navy-deep: #234a80;
+  --color-blue: #3e71b4;
+  --color-red: #dc524d;
+  --color-red-ink: #c8433e;
+  --color-red-hover: #b13a35;
+  --color-red-soft: #fbe6e5;
+  --color-blush: #ffd9d7;
+  --color-ink: #1b2430;
+  --color-ink-soft: #4f5866;
+  --color-paper: #ffffff;
+  --color-surface: #f3f6fa;
+  --color-line: #d9e0ea;
+  --color-night: #182338;
+  --color-night-ink: #b9c4d6;
+  --color-mist: #d9e5f5;
+  --color-facebook: #166fe5;
 }
 
 @theme inline {
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* shadcn semantic variables mapped onto the campaign palette */
+:root {
+  --radius: 4px;
+  --background: #ffffff;
+  --foreground: #1b2430;
+  --card: #ffffff;
+  --card-foreground: #1b2430;
+  --popover: #ffffff;
+  --popover-foreground: #1b2430;
+  --primary: #c8433e;
+  --primary-foreground: #ffffff;
+  --secondary: #2f5e9e;
+  --secondary-foreground: #ffffff;
+  --muted: #f3f6fa;
+  --muted-foreground: #4f5866;
+  --accent: #f3f6fa;
+  --accent-foreground: #2f5e9e;
+  --destructive: #c8433e;
+  --border: #d9e0ea;
+  --input: #d9e0ea;
+  --ring: #2f5e9e;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* Keep anchor targets clear of the sticky header */
+  [id] {
+    scroll-margin-top: 72px;
+  }
+  body {
+    @apply bg-paper text-ink leading-[1.45] antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading tracking-[-0.01em];
+  }
+  :focus-visible {
+    @apply outline-3 outline-offset-2 outline-navy;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
