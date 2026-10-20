@@ -1,4 +1,6 @@
-import { FACEBOOK_URL, PAID_FOR_BY } from "@/lib/site";
+import Link from "next/link";
+
+import { FACEBOOK_URL, PAID_FOR_BY, POLICY_LINKS } from "@/lib/site";
 
 export function SiteFooter() {
   return (
@@ -18,6 +20,30 @@ export function SiteFooter() {
         </p>
         <p>{PAID_FOR_BY}</p>
       </div>
+      <nav
+        aria-label="Legal"
+        className="mx-auto mt-3 max-w-[1120px] border-t border-white/10 px-5 pt-3"
+      >
+        <ul className="flex flex-wrap justify-center gap-x-5 gap-y-1 md:justify-start">
+          {POLICY_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className="underline hover:text-white">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+          <li>
+            {/* vanilla-cookieconsent opens its preferences panel from this attribute */}
+            <button
+              type="button"
+              data-cc="show-preferencesModal"
+              className="cursor-pointer underline hover:text-white"
+            >
+              Cookie settings
+            </button>
+          </li>
+        </ul>
+      </nav>
     </footer>
   );
 }

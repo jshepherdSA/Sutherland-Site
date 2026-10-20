@@ -106,3 +106,41 @@
     scroll-behavior: auto;
   }
 }
+
+/* Cookie banner (vanilla-cookieconsent) themed to the campaign palette */
+#cc-main {
+  --cc-font-family:
+    var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --cc-modal-border-radius: 4px;
+  --cc-btn-border-radius: 4px;
+  --cc-primary-color: #1b2430;
+  --cc-secondary-color: #4f5866;
+  --cc-link-color: #2f5e9e;
+  --cc-btn-primary-bg: #c8433e;
+  --cc-btn-primary-border-color: #c8433e;
+  --cc-btn-primary-color: #ffffff;
+  --cc-btn-primary-hover-bg: #b13a35;
+  --cc-btn-primary-hover-border-color: #b13a35;
+  --cc-btn-secondary-bg: #f3f6fa;
+  --cc-btn-secondary-border-color: #d9e0ea;
+  --cc-btn-secondary-color: #2f5e9e;
+  --cc-btn-secondary-hover-bg: #d9e0ea;
+  --cc-btn-secondary-hover-border-color: #d9e0ea;
+  --cc-toggle-on-bg: #2f5e9e;
+  --cc-toggle-readonly-bg: #d9e0ea;
+  --cc-separator-border-color: #d9e0ea;
+  --cc-footer-bg: #f3f6fa;
+  --cc-footer-border-color: #d9e0ea;
+  --cc-cookie-category-block-bg: #f3f6fa;
+  --cc-cookie-category-block-border: #d9e0ea;
+}
+#cc-main .cm__title,
+#cc-main .pm__title {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 900;
+  color: #2f5e9e;
+}
+#cc-main :focus-visible {
+  outline: 3px solid #2f5e9e;
+  outline-offset: 2px;
+}

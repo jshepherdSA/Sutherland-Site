@@ -2,9 +2,10 @@
 
 export const SITE_NAME = "Aaron Sutherland for Newport City Commission";
 
-// Set NEXT_PUBLIC_SITE_URL once the domain is live (used for OG/sitemap URLs).
+// Used for share previews, the sitemap, and robots.txt.
+// NEXT_PUBLIC_SITE_URL can override it (e.g. for a staging deploy).
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://vote4aaron.com";
 
 export const SITE_DESCRIPTION =
   "Re-elect Aaron Sutherland to the Newport City Commission. An attorney, a father, and a public servant with a record on safety, transparency, and community. Election Day is Tuesday, November 3.";
@@ -27,3 +28,9 @@ export const NAV_LINKS = [
 
 export const PAID_FOR_BY =
   "Paid for by Aaron Sutherland for Newport City Commission";
+
+export const POLICY_LINKS = [
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/cookies", label: "Cookie Policy" },
+  { href: "/accessibility", label: "Accessibility" },
+] as const;
