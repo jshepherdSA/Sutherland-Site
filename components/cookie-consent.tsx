@@ -1,10 +1,11 @@
 "use client";
 
-// Cookie consent banner (vanilla-cookieconsent v3) + consent-gated Google tags.
+// Cookie consent banner (vanilla-cookieconsent v3) + consent-gated tracking tags.
 //
 // How it works:
-// - Nothing from Google loads until the visitor accepts. GA needs the
-//   "analytics" category; GTM needs "analytics" or "marketing".
+// - No tracking tag loads until the visitor accepts. GA needs the
+//   "analytics" category; GTM needs "analytics" or "marketing"; the
+//   Simpli.fi ad tag needs "marketing".
 // - Google Consent Mode starts as "denied" and is updated from the visitor's
 //   choices, so tags inside GTM also respect them.
 // - Declining (or later turning a category off) deletes that category's
@@ -19,7 +20,11 @@ import { useEffect, useState } from "react";
 import * as CookieConsent from "vanilla-cookieconsent";
 import "vanilla-cookieconsent/dist/cookieconsent.css";
 
-import { GA_MEASUREMENT_ID, GTM_CONTAINER_ID } from "@/lib/analytics";
+import {
+  GA_MEASUREMENT_ID,
+  GTM_CONTAINER_ID,
+  SIMPLIFI_TAG_ID,
+} from "@/lib/analytics";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 type Consent = { analytics: boolean; marketing: boolean };
@@ -101,7 +106,7 @@ export function CookieConsentBanner() {
             consentModal: {
               title: "Cookies on this site",
               description:
-                "We use a few cookies to keep this site working. With your OK, we'd also use analytics cookies to see how people find and use the site. You can change your choice any time under Cookie settings at the bottom of the page.",
+                "We use a few cookies to keep this site working. With your OK, we'd also use analytics and advertising cookies to see how people find the site and to show campaign ads to past visitors. You can change your choice any time under Cookie settings at the bottom of the page.",
               acceptAllBtn: "Accept",
               acceptNecessaryBtn: "Decline",
               showPreferencesBtn: "Choose cookies",
@@ -134,7 +139,7 @@ export function CookieConsentBanner() {
                 {
                   title: "Marketing",
                   description:
-                    "Help us measure and improve campaign ads, for example through Google Tag Manager.",
+                    "Help us measure and improve campaign ads and show ads to people who have visited this site. Provided by our advertising partners, such as Simpli.fi.",
                   linkedCategory: "marketing",
                 },
                 {
@@ -151,9 +156,18 @@ export function CookieConsentBanner() {
 
   const loadGa = consent.analytics && GA_MEASUREMENT_ID;
   const loadGtm = (consent.analytics || consent.marketing) && GTM_CONTAINER_ID;
+  const loadSimplifi = consent.marketing && SIMPLIFI_TAG_ID;
 
   return (
     <>
+      {/* Simpli.fi "Basic Tag" (async script). The image-pixel version isn't
+          used because it can't be held back until consent. */}
+      {loadSimplifi && (
+        <Script
+          id="simplifi-tag"
+          src={`https://tag.simpli.fi/sifitag/${SIMPLIFI_TAG_ID}`}
+        />
+      )}
       {loadGa && (
         <>
           <Script
