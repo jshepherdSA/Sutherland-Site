@@ -73,10 +73,32 @@ export default function Home() {
       {/* HERO */}
       <section
         aria-labelledby="hero-heading"
-        className="relative overflow-hidden bg-linear-135 from-navy-deep to-blue py-6 pb-7 text-white md:py-8 after:absolute after:top-[-30%] after:right-[-8%] after:h-[160%] after:w-[46%] after:-skew-x-12 after:bg-white/5 after:content-['']"
+        className="relative overflow-hidden bg-linear-135 from-navy-deep to-blue text-white md:flex md:min-h-[420px] md:items-center lg:min-h-[460px]"
       >
-        <div className="relative z-10 mx-auto grid max-w-[1120px] items-center gap-[18px] px-5 md:grid-cols-[1.25fr_0.75fr] md:gap-9">
-          <div>
+        {/* Headshot panel. Desktop: fills the right side; its left edge is a
+            12° diagonal (tan 12° = 0.2126) with a red stripe. The panel is a
+            size container so the slant can use its height (cqh) and keeps the
+            same angle at any hero height.
+            Mobile: full-width photo on top with a diagonal bottom edge. */}
+        <div className="relative h-[300px] w-full [clip-path:polygon(0_0,100%_0,100%_86%,0_100%)] md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-[42%] md:[clip-path:none] md:[container-type:size]">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 hidden bg-red md:block md:[clip-path:polygon(calc(100cqh*0.2126)_0,100%_0,100%_100%,0_100%)]"
+          />
+          <div className="absolute inset-0 md:[clip-path:polygon(calc(100cqh*0.2126_+_6px)_0,100%_0,100%_100%,6px_100%)]">
+            <Image
+              src={heroHeadshot}
+              alt="Aaron Sutherland smiling in a navy blazer"
+              fill
+              sizes="(min-width: 768px) 42vw, 100vw"
+              preload
+              className="object-cover object-[center_15%]"
+            />
+          </div>
+        </div>
+
+        <div className="relative z-10 mx-auto w-full max-w-[1120px] px-5 pt-4 pb-7 md:py-12">
+          <div className="md:max-w-[52%]">
             <h1
               id="hero-heading"
               className="max-w-[720px] text-[2.25rem] leading-[1.02] font-black md:text-[clamp(2.2rem,5.2vw,3.6rem)]"
@@ -103,15 +125,6 @@ export default function Home() {
                 See His Priorities
               </a>
             </div>
-          </div>
-          <div className="order-first md:order-none">
-            <Image
-              src={heroHeadshot}
-              alt="Aaron Sutherland smiling in a navy blazer"
-              sizes="240px"
-              preload
-              className="mx-auto aspect-2/3 w-full max-w-[220px] rounded-[4px] border-[3px] border-white/25 object-cover shadow-[0_20px_40px_-18px_rgba(0,0,0,0.6)] md:mr-0 md:ml-auto md:max-w-[240px]"
-            />
           </div>
         </div>
       </section>

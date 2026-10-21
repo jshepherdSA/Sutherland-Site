@@ -88,9 +88,11 @@ Rules:
 ## Imagery
 
 - Real campaign photography only. Portraits shown at 2:3, `object-cover`.
-- Radius 4px. Hero photo: 3px `white/25` border + deep shadow
-  (`0 20px 40px -18px rgba(0,0,0,.6)`). About photo: soft navy shadow
+- Radius 4px. About photo: soft navy shadow
   (`0 10px 24px -12px rgba(47,94,158,.5)`).
+- Hero headshot: full-height panel on the right 42% of the hero (desktop),
+  left edge cut on a 12° diagonal with a 6px `red` stripe, `object-[center_15%]`.
+  Mobile: full-width 300px photo on top with a diagonal bottom edge.
 - Full-bleed photo band: no radius, 2px navy-deep gaps.
-- Decorative: hero skewed sheen (`white/5`, skewX -12deg). No illustrations or icons
-  beyond the Facebook glyph and simple lucide icons where needed.
+- No illustrations or icons beyond the Facebook glyph and simple lucide icons
+  where needed.
