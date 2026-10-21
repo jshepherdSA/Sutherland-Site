@@ -18,7 +18,7 @@ import barShirt from "@/public/images/bar-shirt.jpg";
 import familyDeck from "@/public/images/family-deck.jpg";
 import familyPorch from "@/public/images/family-porch.jpg";
 import forumPanel from "@/public/images/forum-panel.jpg";
-import heroHeadshot from "@/public/images/hero-headshot.jpg";
+import heroFamily from "@/public/images/hero-family.jpg";
 import officeMaps from "@/public/images/office-maps.jpg";
 import swearingIn from "@/public/images/swearing-in.jpg";
 
@@ -87,12 +87,12 @@ export default function Home() {
           />
           <div className="absolute inset-0 md:[clip-path:polygon(calc(100cqh*0.2126_+_6px)_0,100%_0,100%_100%,6px_100%)]">
             <Image
-              src={heroHeadshot}
-              alt="Aaron Sutherland smiling in a navy blazer"
+              src={heroFamily}
+              alt="Aaron Sutherland at home with his wife and their two young sons, one holding a basketball"
               fill
               sizes="(min-width: 768px) 42vw, 100vw"
               preload
-              className="object-cover object-[center_15%]"
+              className="object-cover object-[40%_30%]"
             />
           </div>
         </div>
