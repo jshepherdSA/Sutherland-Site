@@ -20,8 +20,8 @@ export function SiteHeader() {
           <Image
             src={logo}
             alt="Re-Elect Aaron Sutherland, Newport City Commission"
-            className="h-10 w-auto"
-            sizes="72px"
+            className="h-12 w-auto md:h-16"
+            sizes="(min-width: 768px) 114px, 86px"
             preload
           />
         </Link>

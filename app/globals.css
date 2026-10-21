@@ -85,7 +85,7 @@
   }
   /* Keep anchor targets clear of the sticky header */
   [id] {
-    scroll-margin-top: 72px;
+    scroll-margin-top: 96px;
   }
   body {
     @apply bg-paper text-ink leading-[1.45] antialiased;
